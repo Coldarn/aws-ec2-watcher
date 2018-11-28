@@ -27,7 +27,8 @@ if (!fs.existsSync(awsCredsFile)) {
 const creds = ini.parse(fs.readFileSync(awsCredsFile, { encoding: 'utf8' }))
 store.replaceState({
     creds: creds,
-    profile: 'default'
+    profile: 'default',
+    page: creds.aws_access_key_id ? 'instance-list' : 'creds'
 })
 
 const rootEl = document.createElement('div')

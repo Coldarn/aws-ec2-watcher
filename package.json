@@ -4,7 +4,7 @@
   "description": "Tray application for managing Amazon EC2 instances",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack --mode=development --watch",
+    "dev": "webpack --mode=development --devtool=source-map --watch",
     "release": "webpack --mode=production",
     "start": "electron index.js"
   },
