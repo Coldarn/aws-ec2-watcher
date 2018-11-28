@@ -1,6 +1,6 @@
 <template>
     <div class="app vbox">
-        <h1>APP</h1>
+        APP
     </div>
 </template>
 
@@ -13,5 +13,11 @@
         background: #111;
         color: white;
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        font-size: 11pt;
+        margin: 0;
+        padding: 0;
+    }
+    body {
+        padding: 10px;
     }
 </style>
