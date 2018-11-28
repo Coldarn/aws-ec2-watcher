@@ -1,0 +1,16 @@
+{
+  "name": "aws-ec2-watcher",
+  "version": "1.0.0",
+  "description": "Tray application for managing Amazon EC2 instances",
+  "main": "index.js",
+  "scripts": {
+    "start": "electron index.js"
+  },
+  "author": "Collin Arnold <collin@collinarnold.net>",
+  "license": "MIT",
+  "dependencies": {
+    "aws-sdk": "^2.364.0",
+    "electron": "^3.0.10",
+    "menubar": "^5.2.3"
+  }
+}
