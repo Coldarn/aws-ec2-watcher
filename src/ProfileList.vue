@@ -1,7 +1,7 @@
 <template>
     <div class="page vbox">
         <h1>AWS Profile</h1>
-        <div class="hbox profile" v-for="profile in profiles" :key="profile.name">
+        <div class="hbox profile" v-for="profile in profiles" :key="profile.id">
             <div class="fill">{{ profile.name }}</div>
             <button @click="handleSelect(profile)">Select</button>
             <button @click="handleEdit(profile)">Edit</button>

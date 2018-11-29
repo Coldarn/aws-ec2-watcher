@@ -1,6 +1,8 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
 
+import ProfileService from './services/ProfileService'
+
 Vue.use(Vuex)
 
 let profileId = 0
@@ -28,6 +30,7 @@ export default function Store() {
             updateProfile(state, profile) {
                 state.profiles.forEach(p => {
                     if (p.id === profile.id) {
+                        ProfileService.saveProfile(p.name, profile)
                         Object.assign(p, profile)
                     }
                 })
