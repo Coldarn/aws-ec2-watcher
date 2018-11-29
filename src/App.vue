@@ -1,27 +1,23 @@
 <template>
     <div class="app vbox">
-        <div class="page vbox" :class="page" v-if="page === 'creds'">
-            <h1>AWS Credentials</h1>
-            <label class="vbox" for="input">
-                aws_access_key_id:
-                <input type="text" :value="aws_access_key_id" />
-            </label>
-            <label class="vbox" for="input">
-                aws_secret_access_key:
-                <input type="text" :value="aws_secret_access_key" />
-            </label>
-        </div>
+        <ProfileList :class="page" v-if="page === 'profile-list'" />
+        <ProfileEditor :class="page" v-else-if="page === 'profile-edit'" />
     </div>
 </template>
 
 <script>
+import { mapState } from 'vuex'
+
+import ProfileList from './ProfileList.vue'
+import ProfileEditor from './ProfileEditor.vue'
+
 export default {
     name: 'App',
-    computed: {
-        page() {
-            return this.$store.state.page
-        }
-    }
+    components: {
+        ProfileList,
+        ProfileEditor
+    },
+    computed: mapState(['page'])
 }
 </script>
 
@@ -43,12 +39,21 @@ input {
     color: white;
     border: 0;
     margin: 2px;
+    padding: 3px 5px;
 }
 h1 {
     font-size: 1em;
     font-weight: bold;
     margin: 0;
     margin-bottom: 1em;
+}
+button {
+    margin: 2px;
+    padding: 3px 5px;
+    background: #999;
+    border-radius: 4px;
+    border: 0;
+    cursor: pointer;
 }
 .hbox {
     display: flex;
@@ -58,6 +63,9 @@ h1 {
     display: flex;
     flex-direction: column;
     align-items: stretch;
+}
+.fill {
+    flex: 1;
 }
 </style>
 
