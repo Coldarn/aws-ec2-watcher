@@ -51,7 +51,7 @@ h1 {
     font-size: 1em;
     font-weight: bold;
     margin: 0;
-    margin-bottom: 1em;
+    margin-bottom: 10px;
 }
 button {
     margin: 2px;

@@ -2,7 +2,7 @@
     <div class="page vbox">
         <h1>Add EC2 Instance to Monitor</h1>
         <div class="search hbox">
-            <input class="fill" placeholder="Search by name, instance ID, or private IP" v-model="search" />
+            <input class="fill" placeholder="Instance name, ID, or private IP" v-model="search" />
             <button @click="handleSearch">Search</button>
         </div>
         <div class="hbox instance" v-for="instance in instances" :key="instance.id">
