@@ -2,6 +2,7 @@
     <div class="app vbox">
         <ProfileList :class="page" v-if="page === 'profile-list'" />
         <ProfileEditor :class="page" v-else-if="page === 'profile-edit'" />
+        <AddInstance :class="page" v-else-if="page === 'instance-add'" />
         <InstanceList :class="page" v-else />
     </div>
 </template>
@@ -12,12 +13,14 @@ import { mapState } from 'vuex'
 import ProfileList from './ProfileList.vue'
 import ProfileEditor from './ProfileEditor.vue'
 import InstanceList from './InstanceList.vue'
+import AddInstance from './AddInstance.vue'
 
 export default {
     name: 'App',
     components: {
         ProfileList,
         ProfileEditor,
+        AddInstance,
         InstanceList,
     },
     computed: mapState(['page'])

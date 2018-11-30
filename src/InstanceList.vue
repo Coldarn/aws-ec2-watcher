@@ -30,10 +30,9 @@ export default {
         //     this.$store.commit('pushPage', 'profile-edit')
         // },
         handleAdd() {
-            InstanceService.listInstances(this.$store.state.activeProfile).then(data => console.log(data))
             // const name = this.$store.state.profiles.length === 0 ? 'default' : null
             // this.$store.commit('addProfile', { name })
-            // this.$store.commit('pushPage', 'profile-edit')
+            this.$store.commit('pushPage', 'instance-add')
         }
     }
 }
