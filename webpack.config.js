@@ -6,7 +6,7 @@ module.exports = {
     entry: path.join(__dirname, 'src', 'app.js'),
     output: {
         path: path.resolve(__dirname, "dist"),
-        filename: 'app.[hash].js'
+        filename: 'app.js'
     },
     module: {
         rules: [{
