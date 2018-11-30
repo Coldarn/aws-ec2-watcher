@@ -39,14 +39,20 @@ module.exports = {
                                 out.push(inst)
                             }
                         } else {
-                            const name = (inst.Tags && inst.Tags.find(tag => tag.Key === 'Name')) || { Value: ''}
+                            const name = inst.Tags.find(tag => tag.Key === 'Name') || { Value: ''}
                             if (name.Value.match(nameRe)) {
                                 out.push(inst)
                             }
                         }
                     })
                     return out;
-                }, []))
+                }, []).map(inst => {
+                    return {
+                        id: inst.InstanceId,
+                        name: (inst.Tags.find(tag => tag.Key == 'Name') || { Value: ''}).Value,
+                        privateIp: inst.PrivateIpAddress
+                    }
+                }))
             })
         })
     }

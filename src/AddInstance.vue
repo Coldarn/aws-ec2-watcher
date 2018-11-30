@@ -31,14 +31,6 @@ export default {
         // },
         handleSearch() {
             InstanceService.listInstances(this.$store.state.activeProfile, 'us-east-1', this.search).then(instances => {
-                instances.forEach(instance => {
-                    const tag = instance.Tags.find(tag => tag.Key == 'Name')
-                    if (tag) {
-                        instance.name = tag.Value
-                    } else {
-                        instance.name = instance.KeyName
-                    }
-                })
                 this.instances.length = 0
                 this.instances.push.apply(this.instances, instances)
 
