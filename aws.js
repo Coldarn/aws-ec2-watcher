@@ -12,21 +12,39 @@ module.exports = {
             console.log(search)
 
             search = search.trim()
-            let filter = null
             if (search.startsWith('i-')) {
-                filter = { Name: 'instance-id', Values: [search] }
-            } else if (search.split('.') === 4) {
-                filter = { Name: 'private-dns-name', Values: [`ip-${search.replace(/\./g, '-')}.dev.tech.local`] }
-            } else {
-                filter = { Name: 'tag:Name', Values: [`*${search}*`] }
+                filter = { Name: 'instance-id', Values: search.split(/[^a-zA-Z0-9-]/).filter(i => i) }
+                ec2.describeInstances({ InstanceIds : [search] }, data => {
+                    if (err) {
+                        return rej(err)
+                    }
+                    res(data.Reservations.reduce((out, res) => {
+                        out.push.apply(out, res.Instances)
+                        return out;
+                    }, []))
+                })
+                return
             }
         
-            ec2.describeInstances({ Filters: [filter] }, (err, data) => {
+            const isIp = search.split('.').length === 4
+            const nameRe = new RegExp(search, 'i')
+            ec2.describeInstances((err, data) => {
                 if (err) {
                     return rej(err)
                 }
                 res(data.Reservations.reduce((out, res) => {
-                    out.push.apply(out, res.Instances);
+                    res.Instances.forEach(inst => {
+                        if (isIp) {
+                            if (inst.PrivateIpAddress === search) {
+                                out.push(inst)
+                            }
+                        } else {
+                            const name = (inst.Tags && inst.Tags.find(tag => tag.Key === 'Name')) || { Value: ''}
+                            if (name.Value.match(nameRe)) {
+                                out.push(inst)
+                            }
+                        }
+                    })
                     return out;
                 }, []))
             })
