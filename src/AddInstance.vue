@@ -8,7 +8,10 @@
             <input class="fill" placeholder="Instance name, ID, or private IP" v-model="search" @keypress.enter="handleSearch" v-focus />
             <button @click="handleSearch">Search</button>
         </div>
-        <div class="vbox fill scroll-y">
+        <div class="loading hbox fill center" v-show="loading">
+            <div class="dot-bricks" />
+        </div>
+        <div class="vbox fill scroll-y" v-show="!loading">
             <div class="hbox instance" v-for="instance in prospectiveInstances" :key="instance.id">
                 <button class="icon" @click="handleAddRemove(instance)">
                     <icon-checkbox-empty title="Add" v-if="!isIncluded(instance)" />
@@ -35,7 +38,8 @@ export default {
     data() {
         return {
             search: null,
-            prospectiveInstances: []
+            prospectiveInstances: [],
+            loading: false,
         }
     },
     methods: {
@@ -47,8 +51,10 @@ export default {
         },
         handleSearch() {
             this.prospectiveInstances = []
+            this.loading = true
             InstanceService.listInstances(this.$store.state.activeProfile, 'us-east-1', this.search).then(instances => {
                 this.prospectiveInstances.push.apply(this.prospectiveInstances, instances)
+                this.loading = false
             })
         },
         handleBack() {

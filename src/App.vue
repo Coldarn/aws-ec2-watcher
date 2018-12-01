@@ -8,6 +8,7 @@
 </template>
 
 <script>
+import "./loading.css"
 import { mapState } from 'vuex'
 
 import ProfileList from './ProfileList.vue'
@@ -112,6 +113,10 @@ button:focus {
 }
 .fill {
     flex: 1;
+}
+.center {
+    align-items: center;
+    justify-content: center;
 }
 .page {
     height: 100%;

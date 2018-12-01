@@ -14,6 +14,9 @@
                 <button class="icon" v-else-if="instance.state === 'running'">
                     <icon-stop title="Stop instance" />
                 </button>
+                <div class="hbox center spinner" v-else>
+                    <div class="dot-spin" />
+                </div>
                 <div class="fill name" :title="`${instance.name} - ${instance.privateIp} - ${instance.id}`">
                     {{ instance.name }} &nbsp;<small>{{ instance.privateIp }} &nbsp;{{ instance.id }}</small>
                 </div>
@@ -110,7 +113,10 @@ button.add {
     align-items: center;
     min-height: 25px;
     padding-right: 10px;
-    padding-left: 10px;
+}
+.spinner {
+    width: 29px;
+    height: 25px;
 }
 .instance.pending {
     background: repeating-linear-gradient(
@@ -125,12 +131,13 @@ button.add {
 .instance.running {
     background: #094028;
     cursor: pointer;
-    padding-left: 0;
 }
+.instance.loading,
 .instance.stopped {
     background: #292929;
+}
+.instance.stopped {
     cursor: pointer;
-    padding-left: 0;
 }
 .instance.stopping {
     background: repeating-linear-gradient(
@@ -154,6 +161,7 @@ button.add {
 }
 .instance.terminated {
     background: #570d1b;
+    padding-left: 10px;
 }
 @keyframes RunningBackground {
     0% {
