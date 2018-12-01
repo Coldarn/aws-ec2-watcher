@@ -43,7 +43,6 @@ html {
     display: flex;
 }
 body {
-    padding: 10px;
     display: flex;
     flex: 1;
 }
@@ -99,6 +98,7 @@ button:focus {
 }
 .page {
     height: 100%;
+    padding: 10px;
 }
 .scroll-y {
     overflow-y: auto;

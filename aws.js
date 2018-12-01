@@ -1,9 +1,31 @@
 const AWS = require('aws-sdk')
 
+let ec2;
+
 module.exports = {
+    startInstance(instanceId) {
+        return new Promise((res, rej) => {
+            ec2.startInstances({ InstanceIds: [instanceId] }, (err, data) => {
+                if (err) {
+                    return rej(err)
+                }
+                res(data)
+            })
+        })
+    },
+    stopInstance(instanceId) {
+        return new Promise((res, rej) => {
+            ec2.stopInstances({ InstanceIds: [instanceId] }, (err, data) => {
+                if (err) {
+                    return rej(err)
+                }
+                res(data)
+            })
+        })
+    },
     listInstances(profile, region, search) {
         return new Promise((res, rej) => {
-            const ec2 = new AWS.EC2({
+            ec2 = new AWS.EC2({
                 apiVersion: '2016-11-15',
                 region,
                 profile,
@@ -16,7 +38,7 @@ module.exports = {
                 if (typeof search === 'string') {
                     search = search.split(/[^a-zA-Z0-9-]/).filter(i => i)
                 }
-                ec2.describeInstances({ InstanceIds : search }, (err, data) => {
+                ec2.describeInstances({ InstanceIds: search }, (err, data) => {
                     if (err) {
                         return rej(err)
                     }
