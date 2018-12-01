@@ -36,9 +36,20 @@ body {
     font-size: 11pt;
     margin: 0;
     padding: 0;
+    overflow: hidden;
+}
+html {
+    height: 100%;
+    display: flex;
 }
 body {
     padding: 10px;
+    display: flex;
+    flex: 1;
+}
+.app {
+    flex: 1;
+    overflow: hidden;
 }
 input {
     background: #333;
@@ -72,6 +83,12 @@ button {
 }
 .fill {
     flex: 1;
+}
+.page {
+    height: 100%;
+}
+.scroll-y {
+    overflow-y: auto;
 }
 </style>
 
