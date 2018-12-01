@@ -9,12 +9,14 @@ module.exports = {
                 profile,
             })
 
-            console.log(search)
-
-            search = search.trim()
-            if (search.startsWith('i-')) {
-                filter = { Name: 'instance-id', Values: search.split(/[^a-zA-Z0-9-]/).filter(i => i) }
-                ec2.describeInstances({ InstanceIds : [search] }, data => {
+            if (typeof search === 'string') {
+                search = search.trim()
+            }
+            if (Array.isArray(search) || search.startsWith('i-')) {
+                if (typeof search === 'string') {
+                    search = search.split(/[^a-zA-Z0-9-]/).filter(i => i)
+                }
+                ec2.describeInstances({ InstanceIds : search }, (err, data) => {
                     if (err) {
                         return rej(err)
                     }
@@ -46,13 +48,16 @@ module.exports = {
                         }
                     })
                     return out;
-                }, []).map(inst => {
-                    return {
-                        id: inst.InstanceId,
-                        name: (inst.Tags.find(tag => tag.Key == 'Name') || { Value: ''}).Value,
-                        privateIp: inst.PrivateIpAddress
-                    }
-                }))
+                }, []))
+            })
+        }).then(instances => {
+            return instances.map(inst => {
+                return {
+                    id: inst.InstanceId,
+                    name: (inst.Tags.find(tag => tag.Key == 'Name') || { Value: ''}).Value,
+                    privateIp: inst.PrivateIpAddress,
+                    state: inst.State.Name,
+                }
             })
         })
     }
