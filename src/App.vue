@@ -57,14 +57,27 @@ input {
     margin: 2px;
     padding: 3px 5px;
 }
+.tbar {
+    align-items: center;
+}
+.tbar button.icon {
+    margin: 0;
+    padding: 0;
+    width: 32px;
+    height: 40px;
+}
 h1 {
     font-size: 1em;
     font-weight: bold;
-    margin: 0;
-    margin-bottom: 10px;
+    flex: 1;
+    line-height: 40px;
+    margin: 0 10px;
+}
+.tbar > button + h1 {
+    margin-left: 0;
 }
 button {
-    margin: 2px;
+    margin: 0 2px;
     padding: 3px 5px;
     background: #999;
     border-radius: 4px;
@@ -84,6 +97,10 @@ button:focus {
     background: none;
     color: white;
 }
+.icon > * {
+    height: 24px;
+    width: 24px;
+}
 .hbox {
     display: flex;
     align-items: stretch;
@@ -98,7 +115,6 @@ button:focus {
 }
 .page {
     height: 100%;
-    padding: 10px;
 }
 .scroll-y {
     overflow-y: auto;

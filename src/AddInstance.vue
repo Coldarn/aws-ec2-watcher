@@ -1,6 +1,9 @@
 <template>
     <div class="page vbox">
-        <h1>Add EC2 Instance to Monitor</h1>
+        <div class="tbar hbox">
+            <button class="icon" @click="handleBack"><icon-back /></button>
+            <h1>Select Instances to Monitor</h1>
+        </div>
         <div class="search hbox">
             <input class="fill" placeholder="Instance name, ID, or private IP" v-model="search" @keypress.enter="handleSearch" v-focus />
             <button @click="handleSearch">Search</button>
@@ -16,7 +19,6 @@
                 </div>
             </div>
         </div>
-        <button @click="handleBack">Back</button>
     </div>
 </template>
 
@@ -58,11 +60,12 @@ export default {
 
 <style scoped>
 .search {
-    margin-bottom: 10px;
+    margin: 0 10px 10px 10px;
 }
 .instance {
     align-items: center;
     min-height: 25px;
+    padding: 0 10px 0 6px;
 }
 .name {
     white-space: nowrap;

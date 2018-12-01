@@ -1,6 +1,10 @@
 <template>
     <div class="page vbox">
-        <h1>EC2 Instances</h1>
+        <div class="tbar hbox">
+            <h1>EC2 Instances</h1>
+            <button class="icon" @click="handleAdd"><icon-plus title="Add instances" /></button>
+            <button class="icon" @click="handleClose"><icon-close title="Close" /></button>
+        </div>
         <div class="vbox fill scroll-y">
             <div class="hbox instance" :class="instance.state" v-for="instance in instances" :key="instance.id" @click="handleStartStop(instance)">
                 <!-- pending | running | shutting-down | terminated | stopping | stopped -->
@@ -15,7 +19,6 @@
                 </div>
             </div>
         </div>
-        <button class="add" @click="handleAdd">Add instances</button>
     </div>
 </template>
 
@@ -57,7 +60,17 @@ export default {
     methods: {
         refreshInstances() {
             InstanceService.listInstances(this.$store.state.activeProfile, 'us-east-1', this.instanceIds).then(instances => {
-                this.instances = instances
+                this.instances = []
+                if (instances.length < this.instanceIds.length) {
+                    this.instanceIds.forEach(id => {
+                        if (!instances.some(inst => inst.id === id)) {
+                            this.$store.commit('removeInstance', id)
+                        }
+                    })
+                }
+                instances.forEach(inst => {
+                    this.instances[this.instanceIds.indexOf(inst.id)] = inst
+                })
                 this.refreshTimer = setTimeout(() => this.refreshInstances(), 5000)
             })
         },
@@ -81,23 +94,17 @@ export default {
         },
         handleAdd() {
             this.$store.commit('pushPage', 'instance-add')
+        },
+        handleClose() {
+            window.close();
         }
     }
 }
 </script>
 
 <style scoped>
-.page {
-    padding: 10px 0;
-}
-h1 {
-    padding: 0 10px;
-}
 button.add {
     margin: 0 10px;
-}
-button.icon {
-    margin: 0 2px;
 }
 .instance {
     align-items: center;
