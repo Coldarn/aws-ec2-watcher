@@ -35,6 +35,19 @@ export default function Store() {
                     }
                 })
             },
+            addInstance(state, instanceId) {
+                if (state.activeProfile.instances.indexOf(instanceId) < 0) {
+                    state.activeProfile.instances.push(instanceId)
+                    ProfileService.saveProfile(state.activeProfile.name, state.activeProfile)
+                }
+            },
+            removeInstance(state, instanceId) {
+                const idx = state.activeProfile.instances.indexOf(instanceId)
+                if (idx >= 0) {
+                    state.activeProfile.instances.splice(idx, 1)
+                    ProfileService.saveProfile(state.activeProfile.name, state.activeProfile)
+                }
+            },
 
             setPage(state, page) {
                 state.page = page

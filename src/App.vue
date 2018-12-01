@@ -72,6 +72,19 @@ button {
     border: 0;
     cursor: pointer;
 }
+button:focus {
+    outline: none;
+}
+.icon {
+    padding: 0;
+    width: 25px;
+    height: 25px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    color: white;
+}
 .hbox {
     display: flex;
     align-items: stretch;

@@ -5,6 +5,14 @@ import App from './App.vue'
 import Store from './store'
 import ProfileService from './services/ProfileService'
 
+
+import IconCheckboxEmpty from 'vue-material-design-icons/CheckboxBlankOutline.vue'
+import IconCheckboxChecked from 'vue-material-design-icons/CheckboxMarkedOutline.vue'
+
+Vue.component('icon-checkbox-empty', IconCheckboxEmpty)
+Vue.component('icon-checkbox-checked', IconCheckboxChecked)
+
+
 const store = Store()
 
 const profiles = ProfileService.getProfiles()
