@@ -15,6 +15,8 @@ import IconEdit from 'vue-material-design-icons/Pencil.vue'
 import IconTrash from 'vue-material-design-icons/TrashCanOutline.vue'
 import IconCheckboxEmpty from 'vue-material-design-icons/CheckboxBlankOutline.vue'
 import IconCheckboxChecked from 'vue-material-design-icons/CheckboxMarkedOutline.vue'
+import IconCheck from 'vue-material-design-icons/Check.vue'
+import IconCancel from 'vue-material-design-icons/Close.vue'
 import IconProfile from 'vue-material-design-icons/AccountOutline.vue'
 import IconClose from 'vue-material-design-icons/WindowClose.vue'
 
@@ -27,6 +29,8 @@ Vue.component('icon-edit', IconEdit)
 Vue.component('icon-trash', IconTrash)
 Vue.component('icon-checkbox-empty', IconCheckboxEmpty)
 Vue.component('icon-checkbox-checked', IconCheckboxChecked)
+Vue.component('icon-check', IconCheck)
+Vue.component('icon-cancel', IconCancel)
 Vue.component('icon-profile', IconProfile)
 Vue.component('icon-close', IconClose)
 
