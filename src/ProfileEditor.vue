@@ -7,7 +7,7 @@
         <div class="form">
             <label class="vbox" for="input">
                 Name
-                <input type="text" v-model="profile.name" v-focus />
+                <input type="text" v-model="profile.name" v-focus placeholder="Profile name like &quot;default&quot;" />
             </label>
             <label class="vbox" for="input">
                 Access Key ID
@@ -19,7 +19,7 @@
             </label>
             <label class="vbox fill" for="input">
                 AWS Region
-                <input type="text" v-model="profile.region" />
+                <input type="text" v-model="profile.region" placeholder="Region name like &quot;us-east-1&quot;" />
             </label>
             <a href="#" @click="handleHelp">Instructions for creating AWS credentials</a>
         </div>

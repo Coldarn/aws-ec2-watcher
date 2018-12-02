@@ -69,7 +69,7 @@ export default {
             if (!this.instanceIds || this.instanceIds.length === 0) {
                 return
             }
-            clearTimeout(me.refreshTimer)
+            clearTimeout(this.refreshTimer)
             InstanceService.listInstances(this.$store.state.activeProfile, this.instanceIds).then(instances => {
                 this.instances = []
                 if (instances.length < this.instanceIds.length) {
