@@ -25,10 +25,10 @@ module.exports = {
     },
     listInstances(profile, region, search) {
         return new Promise((res, rej) => {
+            AWS.config.credentials = new AWS.SharedIniFileCredentials({ profile })
             ec2 = new AWS.EC2({
                 apiVersion: '2016-11-15',
                 region,
-                profile,
             })
 
             if (typeof search === 'string') {
