@@ -14,7 +14,8 @@ To facilitate the process of manually starting, stopping, and monitoring a modes
 1. Select a profile with the desired credentials:<br>
 ![Select a profile](site/SelectProfile.png)
 1. Add instances to the profile:<br>
-![Create a profile](site/AddInstances.png)
-1. Start/stop the instances:<br>
-![Create a profile](site/StartInstances.png)
-1. Done!
+![Add instances](site/AddInstances.png)
+1. Start an instance:<br>
+![Start an instance](site/StartInstances.png)
+1. Done!<br>
+![Instance is running](site/InstanceRunning.png)
