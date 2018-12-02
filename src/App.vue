@@ -78,12 +78,27 @@ h1 {
     margin-left: 0;
 }
 button {
-    margin: 0 2px;
     padding: 3px 5px;
     background: #999;
     border-radius: 4px;
     border: 0;
+}
+button,
+.hover {
     cursor: pointer;
+    position: relative;
+}
+button:hover::after,
+.hover:hover::after {
+    position: absolute;
+    content: ' ';
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0.2;
+    pointer-events: none;
 }
 button:focus {
     outline: none;
@@ -98,7 +113,7 @@ button:focus {
     background: none;
     color: white;
 }
-.icon > * {
+.material-design-icon {
     height: 24px;
     width: 24px;
 }

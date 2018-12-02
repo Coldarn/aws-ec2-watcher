@@ -9,17 +9,25 @@ import ProfileService from './services/ProfileService'
 import IconPlay from 'vue-material-design-icons/Play.vue'
 import IconStop from 'vue-material-design-icons/Stop.vue'
 import IconPlus from 'vue-material-design-icons/Plus.vue'
+import IconForward from 'vue-material-design-icons/ChevronRight.vue'
 import IconBack from 'vue-material-design-icons/ChevronLeft.vue'
+import IconEdit from 'vue-material-design-icons/Pencil.vue'
+import IconTrash from 'vue-material-design-icons/TrashCanOutline.vue'
 import IconCheckboxEmpty from 'vue-material-design-icons/CheckboxBlankOutline.vue'
 import IconCheckboxChecked from 'vue-material-design-icons/CheckboxMarkedOutline.vue'
+import IconProfile from 'vue-material-design-icons/AccountOutline.vue'
 import IconClose from 'vue-material-design-icons/WindowClose.vue'
 
 Vue.component('icon-play', IconPlay)
 Vue.component('icon-stop', IconStop)
 Vue.component('icon-plus', IconPlus)
+Vue.component('icon-forward', IconForward)
 Vue.component('icon-back', IconBack)
+Vue.component('icon-edit', IconEdit)
+Vue.component('icon-trash', IconTrash)
 Vue.component('icon-checkbox-empty', IconCheckboxEmpty)
 Vue.component('icon-checkbox-checked', IconCheckboxChecked)
+Vue.component('icon-profile', IconProfile)
 Vue.component('icon-close', IconClose)
 
 

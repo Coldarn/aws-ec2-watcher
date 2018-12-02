@@ -1,21 +1,28 @@
 <template>
     <div class="page vbox">
-        <h1>AWS Profile</h1>
-        <div class="hbox profile" v-for="profile in profiles" :key="profile.id">
-            <div class="fill">{{ profile.name }}</div>
-            <button @click="handleSelect(profile)">Select</button>
-            <button @click="handleEdit(profile)">Edit</button>
+        <div class="hbox tbar">
+            <h1>AWS Profile</h1>
+            <button class="icon" @click="handleAdd"><icon-plus title="Add new profile" /></button>
         </div>
-        <button @click="handleAdd">Add new profile</button>
+        <div class="hbox profile" v-for="profile in profiles" :key="profile.id">
+            <div class="fill hover hbox name" @click="handleSelect(profile)"><icon-forward title="Select" /> {{ profile.name }}</div>
+            <button class="icon" @click="handleEdit(profile)"><icon-edit title="Edit" /></button>
+            <button class="icon" @click="handleDelete(profile)"><icon-trash title="Delete" /></button>
+        </div>
     </div>
 </template>
 
 <script>
-import { mapState } from 'vuex'
-
 export default {
     name: 'ProfileList',
-    computed: mapState(['profiles']),
+    computed: {
+        profiles() {
+            return this.$store.state.profiles
+        },
+        activeProfileName() {
+            return this.$store.state.activeProfile.name
+        },
+    },
     methods: {
         handleSelect(profile) {
             this.$store.commit('setActiveProfile', profile)
@@ -24,6 +31,9 @@ export default {
         handleEdit(profile) {
             this.$store.commit('setActiveProfile', profile)
             this.$store.commit('pushPage', 'profile-edit')
+        },
+        handleDelete(profile) {
+            this.$store.commit('removeProfile', profile)
         },
         handleAdd() {
             const name = this.$store.state.profiles.length === 0 ? 'default' : null
@@ -36,6 +46,10 @@ export default {
 
 <style scoped>
 .profile {
+    height: 25px;
+    align-items: center;
+}
+.name {
     align-items: center;
 }
 </style>

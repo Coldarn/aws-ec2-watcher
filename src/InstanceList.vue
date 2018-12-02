@@ -3,6 +3,7 @@
         <div class="tbar hbox">
             <h1>EC2 Instances</h1>
             <button class="icon" @click="handleAdd"><icon-plus title="Add instances" /></button>
+            <button class="icon" @click="handleChangeProfile"><icon-profile :title="'Profile: ' + profileName" /></button>
             <button class="icon" @click="handleClose"><icon-close title="Close" /></button>
         </div>
         <div class="vbox fill scroll-y">
@@ -48,6 +49,9 @@ export default {
         }
     },
     computed: {
+        profileName() {
+            return this.$store.state.activeProfile.name
+        },
         instanceIds() {
             return this.$store.state.activeProfile.instances
         }
@@ -98,6 +102,9 @@ export default {
         handleAdd() {
             this.$store.commit('pushPage', 'instance-add')
         },
+        handleChangeProfile() {
+            this.$store.commit('pushPage', 'profile-list')
+        },
         handleClose() {
             window.close();
         }
@@ -114,8 +121,11 @@ button.add {
     min-height: 25px;
     padding-right: 10px;
 }
+.instance button:hover::after {
+    display: none;
+}
 .spinner {
-    width: 29px;
+    width: 25px;
     height: 25px;
 }
 .instance.pending {
@@ -130,14 +140,25 @@ button.add {
 }
 .instance.running {
     background: #094028;
-    cursor: pointer;
 }
 .instance.loading,
 .instance.stopped {
     background: #292929;
 }
+.instance.running,
 .instance.stopped {
     cursor: pointer;
+    position: relative;
+}
+.instance.running:hover::after,
+.instance.stopped:hover::after {
+    position: absolute;
+    content: ' ';
+    width: 100%;
+    height: 100%;
+    background: white;
+    opacity: 0.2;
+    pointer-events: none;
 }
 .instance.stopping {
     background: repeating-linear-gradient(

@@ -77,6 +77,17 @@ class ProfileService {
         writeAwsCreds(profiles)
         writeInstances(instances)
     }
+
+    removeProfile(profileName) {
+        const profiles = readAwsCreds()
+        const instances = readInstances()
+
+        delete profiles[profileName]
+        delete instances[profileName]
+
+        writeAwsCreds(profiles)
+        writeInstances(instances)
+    }
 }
 
 export default new ProfileService()

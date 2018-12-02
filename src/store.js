@@ -27,6 +27,15 @@ export default function Store() {
                     state.activeProfile = p
                 })
             },
+            removeProfile(state, profiles) {
+                [].concat(profiles).forEach(p => {
+                    const idx = state.profiles.indexOf(p)
+                    if (idx >= 0) {
+                        state.profiles.splice(idx, 1)
+                        ProfileService.removeProfile(p.name)
+                    }
+                })
+            },
             updateProfile(state, profile) {
                 state.profiles.forEach(p => {
                     if (p.id === profile.id) {
@@ -35,6 +44,8 @@ export default function Store() {
                     }
                 })
             },
+
+
             addInstance(state, instanceId) {
                 if (state.activeProfile.instances.indexOf(instanceId) < 0) {
                     state.activeProfile.instances.push(instanceId)
