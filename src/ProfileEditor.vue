@@ -21,6 +21,7 @@
                 AWS Region
                 <input type="text" v-model="profile.region" />
             </label>
+            <a href="#" @click="handleHelp">Instructions for creating AWS credentials</a>
         </div>
     </div>
 </template>
@@ -34,6 +35,9 @@ export default {
         }
     },
     methods: {
+        handleHelp() {
+            require('electron').remote.require('./aws').launchHelp()
+        },
         handleBack() {
             this.$store.commit('updateProfile', this.profile)
             this.$store.commit('popPage')
@@ -43,6 +47,12 @@ export default {
 </script>
 
 <style scoped>
+a {
+    color: white;
+}
+a:visited {
+    color: white;
+}
 .form {
     padding: 0 12px;
 }
