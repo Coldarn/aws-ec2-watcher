@@ -1,18 +1,38 @@
 {
   "name": "aws-ec2-watcher",
-  "version": "1.0.0",
+  "version": "0.9.1",
+  "buildNumber": 12,
   "description": "Tray application for managing Amazon EC2 instances",
   "main": "index.js",
   "scripts": {
     "dev": "webpack --mode=development --devtool=source-map --watch",
-    "release": "webpack --mode=production",
+    "pack": "electron-builder --dir",
+    "release": "webpack --mode=production && electron-builder",
     "start": "electron index.js"
+  },
+  "build": {
+    "appId": "com.electron.ec2Watcher",
+    "productName": "AWS EC2 Watcher",
+    "artifactName": "${productName} v${version}.${ext}",
+    "copyright": "Copywrite © 2018 Collin Arnold",
+    "extraFiles": [{
+      "from": ".",
+      "to": "resources",
+      "filter": ["icon.ico"]
+    }, {
+      "from": "./dist",
+      "to": "resources/dist",
+      "filter": ["app.js", "app.js.map", "index.html"]
+    }],
+    "win": {
+      "icon": "./icon.ico",
+      "target": "portable"
+    }
   },
   "author": "Collin Arnold <collin@collinarnold.net>",
   "license": "MIT",
   "dependencies": {
     "aws-sdk": "^2.364.0",
-    "electron": "^3.0.10",
     "ini": "^1.3.5",
     "menubar": "^5.2.3",
     "mkdirp": "^0.5.1",
@@ -21,7 +41,9 @@
     "vuex": "^3.0.1"
   },
   "devDependencies": {
+    "electron": "^3.0.10",
     "css-loader": "^1.0.1",
+    "electron-builder": "^20.38.2",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^0.23.1",
     "vue-loader": "^15.4.2",

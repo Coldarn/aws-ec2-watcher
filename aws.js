@@ -88,5 +88,8 @@ module.exports = {
                     : process.platform == 'win32' ? 'start'
                     : 'xdg-open';
         require('child_process').exec(start + ' https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/getting-your-credentials.html');
+    },
+    exit() {
+        process.exit()
     }
 }

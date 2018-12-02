@@ -15,9 +15,9 @@
    version="1.1"
    id="svg8"
    sodipodi:docname="icon128.svg"
-   inkscape:export-filename="F:\Projects\aws-ec2-watcher\icon.png"
-   inkscape:export-xdpi="48"
-   inkscape:export-ydpi="48"
+   inkscape:export-filename="F:\Projects\aws-ec2-watcher\icons\icon.png"
+   inkscape:export-xdpi="192"
+   inkscape:export-ydpi="192"
    inkscape:version="0.92.3 (2405546, 2018-03-11)">
   <defs
      id="defs2" />
@@ -29,16 +29,16 @@
      inkscape:pageopacity="0.0"
      inkscape:pageshadow="2"
      inkscape:zoom="5.6568542"
-     inkscape:cx="69.49147"
-     inkscape:cy="71.08494"
+     inkscape:cx="69.668247"
+     inkscape:cy="68.43329"
      inkscape:document-units="px"
      inkscape:current-layer="layer1"
      showgrid="true"
      units="px"
-     inkscape:window-width="1513"
-     inkscape:window-height="1194"
-     inkscape:window-x="1807"
-     inkscape:window-y="819"
+     inkscape:window-width="1804"
+     inkscape:window-height="1282"
+     inkscape:window-x="1146"
+     inkscape:window-y="744"
      inkscape:window-maximized="0">
     <inkscape:grid
        type="xygrid"
@@ -52,7 +52,7 @@
         <dc:format>image/svg+xml</dc:format>
         <dc:type
            rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
-        <dc:title></dc:title>
+        <dc:title />
       </cc:Work>
     </rdf:RDF>
   </metadata>

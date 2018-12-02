@@ -112,7 +112,7 @@ export default {
             this.$store.commit('pushPage', 'profile-list')
         },
         handleClose() {
-            window.close();
+            require('electron').remote.require('./aws').exit()
         }
     }
 }
