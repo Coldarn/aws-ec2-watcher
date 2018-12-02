@@ -69,6 +69,7 @@ export default {
             if (!this.instanceIds || this.instanceIds.length === 0) {
                 return
             }
+            clearTimeout(me.refreshTimer)
             InstanceService.listInstances(this.$store.state.activeProfile, this.instanceIds).then(instances => {
                 this.instances = []
                 if (instances.length < this.instanceIds.length) {
@@ -81,7 +82,9 @@ export default {
                 instances.forEach(inst => {
                     this.instances[this.instanceIds.indexOf(inst.id)] = inst
                 })
-                this.refreshTimer = setTimeout(() => this.refreshInstances(), 5000)
+                if (!document.hidden) {
+                    this.refreshTimer = setTimeout(() => this.refreshInstances(), 5000)
+                }
             })
         },
         handleStartStop(instance) {
