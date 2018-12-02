@@ -1,7 +1,7 @@
 <template>
     <div class="page vbox">
         <div class="hbox tbar">
-            <h1>AWS Profile</h1>
+            <h1>Select a Profile</h1>
             <button class="icon" @click="handleAdd"><icon-plus title="Add new profile" /></button>
         </div>
         <div class="hbox profile" v-for="profile in profiles" :key="profile.id">

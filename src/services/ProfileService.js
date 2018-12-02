@@ -49,6 +49,7 @@ class ProfileService {
                 name,
                 aws_access_key_id: profiles[name].aws_access_key_id,
                 aws_secret_access_key: profiles[name].aws_secret_access_key,
+                region: profiles[name].region,
                 instances: instances[name] || []
             }
         })

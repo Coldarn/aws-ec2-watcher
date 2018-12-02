@@ -2,8 +2,8 @@
 const aws = require('electron').remote.require('./aws')
 
 class InstanceService {
-    listInstances(profile, region, search) {
-        return aws.listInstances(profile.name, region, search)
+    listInstances(profile, search) {
+        return aws.listInstances(profile.name, profile.region, search)
     }
 
     startInstance(instanceId) {

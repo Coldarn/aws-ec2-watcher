@@ -1,20 +1,27 @@
 <template>
     <div class="page vbox">
-        <h1>AWS Profile</h1>
-        <label class="vbox" for="input">
-            Name
-            <input type="text" v-model="profile.name" v-focus />
-        </label>
-        <label class="vbox" for="input">
-            Access Key ID
-            <input type="text" v-model="profile.aws_access_key_id" />
-        </label>
-        <label class="vbox fill" for="input">
-            Secret Access Key
-            <input type="text" v-model="profile.aws_secret_access_key" />
-        </label>
-        <button @click="handleSave">Save</button>
-        <button @click="handleCancel">Cancel</button>
+        <div class="tbar hbox">
+            <button class="icon" @click="handleBack"><icon-back title="Back" /></button>
+            <h1>Edit Profile</h1>
+        </div>
+        <div class="form">
+            <label class="vbox" for="input">
+                Name
+                <input type="text" v-model="profile.name" v-focus />
+            </label>
+            <label class="vbox" for="input">
+                Access Key ID
+                <input type="text" v-model="profile.aws_access_key_id" />
+            </label>
+            <label class="vbox fill" for="input">
+                Secret Access Key
+                <input type="text" v-model="profile.aws_secret_access_key" />
+            </label>
+            <label class="vbox fill" for="input">
+                AWS Region
+                <input type="text" v-model="profile.region" />
+            </label>
+        </div>
     </div>
 </template>
 
@@ -27,11 +34,8 @@ export default {
         }
     },
     methods: {
-        handleSave() {
+        handleBack() {
             this.$store.commit('updateProfile', this.profile)
-            this.$store.commit('popPage')
-        },
-        handleCancel() {
             this.$store.commit('popPage')
         }
     }
@@ -39,7 +43,14 @@ export default {
 </script>
 
 <style scoped>
+.form {
+    padding: 0 12px;
+}
 label {
     margin-bottom: 0.5em;
+}
+label input {
+    margin: 0;
+    margin-top: 3px;
 }
 </style>

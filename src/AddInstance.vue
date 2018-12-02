@@ -1,7 +1,7 @@
 <template>
     <div class="page vbox">
         <div class="tbar hbox">
-            <button class="icon" @click="handleBack"><icon-back /></button>
+            <button class="icon" @click="handleBack"><icon-back title="Back" /></button>
             <h1>Select Instances to Monitor</h1>
         </div>
         <div class="search hbox">
@@ -52,7 +52,7 @@ export default {
         handleSearch() {
             this.prospectiveInstances = []
             this.loading = true
-            InstanceService.listInstances(this.$store.state.activeProfile, 'us-east-1', this.search).then(instances => {
+            InstanceService.listInstances(this.$store.state.activeProfile, this.search).then(instances => {
                 this.prospectiveInstances.push.apply(this.prospectiveInstances, instances)
                 this.loading = false
             })

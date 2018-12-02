@@ -66,7 +66,10 @@ export default {
     },
     methods: {
         refreshInstances() {
-            InstanceService.listInstances(this.$store.state.activeProfile, 'us-east-1', this.instanceIds).then(instances => {
+            if (!this.instanceIds || this.instanceIds.length === 0) {
+                return
+            }
+            InstanceService.listInstances(this.$store.state.activeProfile, this.instanceIds).then(instances => {
                 this.instances = []
                 if (instances.length < this.instanceIds.length) {
                     this.instanceIds.forEach(id => {
